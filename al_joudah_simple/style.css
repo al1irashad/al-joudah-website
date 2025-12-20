@@ -1,0 +1,826 @@
+/* ============================================
+   GLOBAL STYLES - الأنماط العامة
+   ============================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Colors - الألوان */
+    --primary-color: #0052CC;      /* أزرق احترافي */
+    --secondary-color: #FFC107;    /* أصفر دافئ */
+    --text-color: #333333;         /* نص داكن */
+    --light-text: #666666;         /* نص فاتح */
+    --background-color: #FFFFFF;   /* خلفية بيضاء */
+    --light-bg: #F5F5F5;          /* خلفية فاتحة */
+    --border-color: #E0E0E0;       /* لون الحدود */
+    --success-color: #25D366;      /* أخضر WhatsApp */
+    
+    /* Fonts - الخطوط */
+    --font-family: 'Cairo', sans-serif;
+    --font-size-base: 16px;
+    --font-size-large: 20px;
+    --font-size-xl: 24px;
+    --font-size-2xl: 32px;
+    --font-size-3xl: 40px;
+    
+    /* Spacing - المسافات */
+    --spacing-xs: 8px;
+    --spacing-sm: 12px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+    --spacing-2xl: 48px;
+    
+    /* Border Radius - تقوس الحواف */
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --radius-xl: 16px;
+    
+    /* Shadows - الظلال */
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.15);
+    --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Typography - الطباعة */
+html {
+    scroll-behavior: smooth;
+    font-size: var(--font-size-base);
+}
+
+body {
+    font-family: var(--font-family);
+    color: var(--text-color);
+    background-color: var(--background-color);
+    line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    margin-bottom: var(--spacing-md);
+    line-height: 1.3;
+}
+
+h1 {
+    font-size: var(--font-size-3xl);
+    color: var(--primary-color);
+}
+
+h2 {
+    font-size: var(--font-size-2xl);
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+h3 {
+    font-size: var(--font-size-xl);
+    color: var(--primary-color);
+}
+
+p {
+    color: var(--light-text);
+    margin-bottom: var(--spacing-md);
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--secondary-color);
+    text-decoration: underline;
+}
+
+/* Container - الحاوية */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+}
+
+/* ============================================
+   HEADER - الرأس
+   ============================================ */
+
+.header {
+    background: linear-gradient(135deg, var(--primary-color) 0%, #003d99 100%);
+    color: white;
+    padding: var(--spacing-lg) 0;
+    box-shadow: var(--shadow-md);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--spacing-lg);
+}
+
+.logo-section {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    flex: 1;
+    min-width: 250px;
+}
+
+.logo {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: white;
+    padding: var(--spacing-xs);
+    object-fit: contain;
+}
+
+.brand-info h1 {
+    color: white;
+    font-size: var(--font-size-xl);
+    margin: 0;
+}
+
+.tagline {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: var(--font-size-base);
+    margin: 0;
+}
+
+.whatsapp-btn-header {
+    background-color: var(--success-color);
+    color: white;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    font-weight: 600;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.whatsapp-btn-header:hover {
+    background-color: #1ebd59;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+    text-decoration: none;
+}
+
+/* ============================================
+   HERO SECTION - القسم الرئيسي
+   ============================================ */
+
+.hero {
+    background: linear-gradient(135deg, #0052CC 0%, #003d99 100%);
+    color: white;
+    padding: var(--spacing-2xl) var(--spacing-lg);
+    text-align: center;
+}
+
+.hero h2 {
+    color: white;
+    font-size: var(--font-size-3xl);
+    margin-bottom: var(--spacing-md);
+}
+
+.hero p {
+    color: rgba(255, 255, 255, 0.95);
+    font-size: var(--font-size-large);
+    margin-bottom: var(--spacing-lg);
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+}
+
+/* ============================================
+   BUTTONS - الأزرار
+   ============================================ */
+
+.btn-primary,
+.btn-whatsapp,
+.btn-add,
+.btn-confirm {
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border: none;
+    border-radius: var(--radius-lg);
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-block;
+    text-align: center;
+    font-family: var(--font-family);
+}
+
+.btn-primary {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+}
+
+.btn-primary:hover {
+    background-color: #ffb300;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.btn-whatsapp,
+.btn-confirm {
+    background-color: var(--success-color);
+    color: white;
+}
+
+.btn-whatsapp:hover,
+.btn-confirm:hover {
+    background-color: #1ebd59;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+    text-decoration: none;
+}
+
+.btn-add {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn-add:hover {
+    background-color: #003d99;
+    transform: translateY(-2px);
+}
+
+/* ============================================
+   SERVICES DETAILED SECTION - الخدمات المفصلة
+   ============================================ */
+
+.services-detailed {
+    padding: var(--spacing-2xl) var(--spacing-lg);
+    background-color: var(--light-bg);
+}
+
+.section-subtitle {
+    text-align: center;
+    color: var(--light-text);
+    font-size: var(--font-size-large);
+    margin-bottom: var(--spacing-xl);
+}
+
+.services-detailed-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+.service-detailed-card {
+    background: white;
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    transition: all 0.3s ease;
+}
+
+.service-detailed-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.service-icon-large {
+    font-size: 48px;
+    margin-bottom: var(--spacing-md);
+    display: block;
+}
+
+.service-features {
+    list-style: none;
+    padding: 0;
+}
+
+.service-features li {
+    padding: var(--spacing-sm) 0;
+    padding-right: var(--spacing-lg);
+    position: relative;
+    color: var(--light-text);
+}
+
+.service-features li:before {
+    content: "✓";
+    color: var(--success-color);
+    font-weight: bold;
+    margin-left: var(--spacing-sm);
+    font-size: 18px;
+}
+
+/* ============================================
+   SERVICES SECTION - قسم الخدمات
+   ============================================ */
+
+.services {
+    padding: var(--spacing-2xl) var(--spacing-lg);
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+.service-card {
+    background: white;
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    text-align: center;
+    box-shadow: var(--shadow-md);
+    transition: all 0.3s ease;
+    border-top: 4px solid var(--primary-color);
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+    border-top-color: var(--secondary-color);
+}
+
+.service-icon {
+    font-size: 40px;
+    margin-bottom: var(--spacing-md);
+    display: block;
+}
+
+.service-card h3 {
+    margin-bottom: var(--spacing-sm);
+}
+
+.service-card p {
+    color: var(--light-text);
+    margin: 0;
+}
+
+/* ============================================
+   CALCULATOR SECTION - حاسبة التكاليف
+   ============================================ */
+
+.calculator {
+    padding: var(--spacing-2xl) var(--spacing-lg);
+    background: linear-gradient(135deg, #f5f5f5 0%, #ffffff 100%);
+}
+
+.calculator-subtitle {
+    text-align: center;
+    color: var(--light-text);
+    font-size: var(--font-size-large);
+    margin-bottom: var(--spacing-xl);
+}
+
+.calculator-box {
+    background: white;
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.input-section {
+    margin-bottom: var(--spacing-lg);
+}
+
+.input-section h3 {
+    margin-bottom: var(--spacing-md);
+    color: var(--primary-color);
+}
+
+.input-group {
+    display: flex;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+}
+
+.input-group input {
+    flex: 1;
+    min-width: 120px;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-base);
+    font-family: var(--font-family);
+    transition: border-color 0.3s ease;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(0, 82, 204, 0.1);
+}
+
+.carpets-list {
+    margin: var(--spacing-lg) 0;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.carpet-item {
+    background: var(--light-bg);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--spacing-md);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-left: 4px solid var(--primary-color);
+}
+
+.carpet-info {
+    flex: 1;
+}
+
+.carpet-info p {
+    margin: var(--spacing-xs) 0;
+    font-size: var(--font-size-base);
+}
+
+.carpet-remove {
+    background-color: #ff4444;
+    color: white;
+    border: none;
+    padding: var(--spacing-xs) var(--spacing-md);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.carpet-remove:hover {
+    background-color: #cc0000;
+}
+
+.summary {
+    background: linear-gradient(135deg, var(--primary-color) 0%, #003d99 100%);
+    color: white;
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    margin-top: var(--spacing-lg);
+}
+
+.summary h3 {
+    color: white;
+    margin-bottom: var(--spacing-md);
+}
+
+.summary p {
+    color: rgba(255, 255, 255, 0.95);
+    margin-bottom: var(--spacing-sm);
+    font-size: var(--font-size-base);
+}
+
+.total-price {
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    color: var(--secondary-color);
+    margin: var(--spacing-md) 0;
+}
+
+/* ============================================
+   LOCATION SECTION - قسم الموقع
+   ============================================ */
+
+.location {
+    padding: var(--spacing-2xl) var(--spacing-lg);
+    background-color: var(--light-bg);
+}
+
+.location-address {
+    text-align: center;
+    font-size: var(--font-size-large);
+    margin-bottom: var(--spacing-lg);
+    color: var(--text-color);
+}
+
+.map-container {
+    margin: var(--spacing-xl) 0;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+}
+
+.map-container iframe {
+    border: none;
+    display: block;
+}
+
+.location-info {
+    background: white;
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    margin-top: var(--spacing-lg);
+}
+
+.location-info p {
+    margin-bottom: var(--spacing-md);
+    font-size: var(--font-size-base);
+}
+
+.location-info a {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+/* ============================================
+   CONTACT SECTION - قسم التواصل
+   ============================================ */
+
+.contact {
+    padding: var(--spacing-2xl) var(--spacing-lg);
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+.contact-card {
+    background: white;
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    text-align: center;
+    box-shadow: var(--shadow-md);
+    transition: all 0.3s ease;
+    border: 2px solid var(--border-color);
+}
+
+.contact-card:hover {
+    border-color: var(--primary-color);
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-3px);
+}
+
+.contact-card h3 {
+    margin-bottom: var(--spacing-md);
+    color: var(--primary-color);
+}
+
+.contact-card p {
+    margin-bottom: var(--spacing-md);
+    color: var(--light-text);
+}
+
+.contact-card a {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: white;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border-radius: var(--radius-md);
+    transition: all 0.3s ease;
+}
+
+.contact-card a:hover {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    text-decoration: none;
+    transform: translateY(-2px);
+}
+
+/* ============================================
+   FOOTER - التذييل
+   ============================================ */
+
+.footer {
+    background: linear-gradient(135deg, var(--primary-color) 0%, #003d99 100%);
+    color: white;
+    padding: var(--spacing-2xl) var(--spacing-lg) var(--spacing-lg);
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+}
+
+.footer-section h4 {
+    color: var(--secondary-color);
+    margin-bottom: var(--spacing-md);
+}
+
+.footer-section p {
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: var(--spacing-md);
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: var(--spacing-sm);
+}
+
+.footer-section a {
+    color: rgba(255, 255, 255, 0.9);
+    transition: color 0.3s ease;
+}
+
+.footer-section a:hover {
+    color: var(--secondary-color);
+    text-decoration: none;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: var(--spacing-lg);
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* ============================================
+   FLOATING WHATSAPP BUTTON - زر WhatsApp العائم
+   ============================================ */
+
+.whatsapp-float {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    width: 60px;
+    height: 60px;
+    background-color: var(--success-color);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    box-shadow: var(--shadow-lg);
+    transition: all 0.3s ease;
+    z-index: 99;
+    text-decoration: none;
+}
+
+.whatsapp-float:hover {
+    background-color: #1ebd59;
+    transform: scale(1.1);
+    box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+}
+
+/* ============================================
+   RESPONSIVE DESIGN - التصميم المتجاوب
+   ============================================ */
+
+@media (max-width: 768px) {
+    :root {
+        --font-size-base: 14px;
+        --font-size-2xl: 24px;
+        --font-size-3xl: 28px;
+        --spacing-lg: 16px;
+        --spacing-xl: 24px;
+        --spacing-2xl: 32px;
+    }
+
+    .header-content {
+        flex-direction: column;
+        gap: var(--spacing-md);
+    }
+
+    .logo-section {
+        width: 100%;
+    }
+
+    .whatsapp-btn-header {
+        width: 100%;
+        text-align: center;
+    }
+
+    .hero h2 {
+        font-size: var(--font-size-2xl);
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+    }
+
+    .hero-buttons a,
+    .hero-buttons button {
+        width: 100%;
+    }
+
+    .input-group {
+        flex-direction: column;
+    }
+
+    .input-group input,
+    .btn-add {
+        width: 100%;
+    }
+
+    .carpet-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-md);
+    }
+
+    .carpet-remove {
+        width: 100%;
+    }
+
+    .whatsapp-float {
+        bottom: 10px;
+        left: 10px;
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 var(--spacing-sm);
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    .services-detailed-grid,
+    .services-grid,
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .calculator-box {
+        padding: var(--spacing-lg);
+    }
+
+    .map-container {
+        height: 300px;
+    }
+}
+
+/* ============================================
+   PRINT STYLES - أنماط الطباعة
+   ============================================ */
+
+@media print {
+    .whatsapp-float,
+    .whatsapp-btn-header,
+    .hero-buttons {
+        display: none;
+    }
+
+    body {
+        font-size: 12px;
+    }
+
+    .calculator-box {
+        page-break-inside: avoid;
+    }
+}
+
+/* ============================================
+   ACCESSIBILITY - إمكانية الوصول
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Focus Styles for Keyboard Navigation */
+button:focus,
+a:focus,
+input:focus {
+    outline: 3px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* Skip to Main Content Link */
+.skip-to-main {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--primary-color);
+    color: white;
+    padding: 8px;
+    text-decoration: none;
+    z-index: 100;
+}
+
+.skip-to-main:focus {
+    top: 0;
+}
