@@ -4,7 +4,7 @@
    ============================================ */
 
 // Constants - الثوابت
-const PRICE_PER_SQUARE_METER = 30; // السعر: 30 ريال للمتر المربع
+const PRICE_PER_SQUARE_METER = 8; // السعر: 8 ريال للمتر المربع
 
 // Global Variables - المتغيرات العامة
 let carpets = []; // Array to store carpet data
