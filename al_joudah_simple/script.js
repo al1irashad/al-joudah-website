@@ -27,8 +27,11 @@ const storage = {
   },
 };
 
+const currentLanguage = () => window.QualityI18n?.getLanguage?.() || "ar";
+const translate = (text) => window.QualityI18n?.t?.(text) || text;
+
 const formatNumber = (value, decimals = 0) =>
-  new Intl.NumberFormat("ar-SA", {
+  new Intl.NumberFormat(currentLanguage() === "en" ? "en-US" : "ar-SA", {
     maximumFractionDigits: decimals,
     minimumFractionDigits: decimals,
   }).format(Number(value) || 0);
@@ -46,7 +49,7 @@ function showToast(message) {
   const toast = document.querySelector("[data-toast]");
   if (!toast) return;
   const text = toast.querySelector("span");
-  if (text) text.textContent = message;
+  if (text) text.textContent = translate(message);
   toast.classList.add("show");
   clearTimeout(window.qualityToastTimer);
   window.qualityToastTimer = setTimeout(() => toast.classList.remove("show"), 2800);
@@ -63,12 +66,256 @@ function refreshIcons() {
   }
 }
 
+function initPreferenceControls() {
+  const actions = document.querySelector(".nav-actions");
+  if (!actions || actions.querySelector("[data-preference-controls]")) return;
+
+  const controls = document.createElement("div");
+  controls.className = "utility-controls";
+  controls.dataset.preferenceControls = "";
+  controls.innerHTML = `
+    <button class="utility-btn" type="button" data-theme-toggle>
+      <i data-lucide="moon"></i>
+    </button>
+    <button class="utility-btn language-btn" type="button" data-language-toggle>EN</button>
+  `;
+  actions.prepend(controls);
+
+  const themeButton = controls.querySelector("[data-theme-toggle]");
+  const languageButton = controls.querySelector("[data-language-toggle]");
+
+  const update = () => {
+    const language = currentLanguage();
+    const theme = document.documentElement.dataset.theme === "dark" ? "dark" : "light";
+    if (themeButton) {
+      themeButton.innerHTML = `<i data-lucide="${theme === "dark" ? "sun" : "moon"}"></i>`;
+      themeButton.setAttribute(
+        "aria-label",
+        language === "en"
+          ? theme === "dark"
+            ? "Switch to light theme"
+            : "Switch to dark theme"
+          : theme === "dark"
+            ? "تفعيل الوضع النهاري"
+            : "تفعيل الوضع الليلي",
+      );
+      themeButton.title = themeButton.getAttribute("aria-label");
+    }
+    if (languageButton) {
+      languageButton.textContent = language === "en" ? "AR" : "EN";
+      languageButton.setAttribute(
+        "aria-label",
+        language === "en" ? "Switch to Arabic" : "Switch to English",
+      );
+      languageButton.title = languageButton.getAttribute("aria-label");
+    }
+    refreshIcons();
+  };
+
+  themeButton?.addEventListener("click", () => {
+    const next =
+      document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+    document.documentElement.dataset.theme = next;
+    storage.set("quality_theme", next);
+    update();
+    showToast(next === "dark" ? "تم تفعيل الوضع الليلي" : "تم تفعيل الوضع النهاري");
+  });
+
+  languageButton?.addEventListener("click", () => {
+    window.QualityI18n?.setLanguage(currentLanguage() === "en" ? "ar" : "en");
+    update();
+    renderCalculator();
+    refreshIcons();
+  });
+
+  document.addEventListener("quality:languagechange", update);
+  update();
+}
+
+function injectDeveloperCredit() {
+  const footer = document.querySelector(".footer-bottom");
+  if (!footer || footer.querySelector(".developer-credit")) return;
+  const credit = document.createElement("span");
+  credit.className = "developer-credit";
+  credit.innerHTML =
+    '<i data-lucide="code-2"></i><span>Designed &amp; developed by <strong>Rashad Al1i</strong></span>';
+  footer.append(credit);
+}
+
+function initWashLab() {
+  const root = document.querySelector("[data-wash-lab]");
+  if (!root) return;
+
+  const stages = {
+    ar: [
+      {
+        short: "الفحص",
+        title: "الفحص الذكي",
+        description: "نتعرّف على النسيج والبقع والمناطق التي تحتاج عناية إضافية.",
+        icon: "scan-search",
+      },
+      {
+        short: "الغبار",
+        title: "وداعاً للغبار",
+        description: "يهتز الغبار خارج الألياف قبل أن تصل قطرة ماء واحدة إلى السجادة.",
+        icon: "wind",
+      },
+      {
+        short: "المنظف",
+        title: "رغوة محسوبة",
+        description: "تُوزّع مادة التنظيف المناسبة بانتظام على المساحة التي تحتاجها.",
+        icon: "flask-conical",
+      },
+      {
+        short: "الفرك",
+        title: "رقصة الفُرش الآلية",
+        description: "تعمل الفُرش بحركة متوازنة لتفكيك الأوساخ من دون عشوائية.",
+        icon: "settings-2",
+      },
+      {
+        short: "الشطف",
+        title: "شطف وشفط",
+        description: "تخرج الرغوة وما حملته من أوساخ، وتبدأ الألوان بالعودة إلى حضورها.",
+        icon: "waves",
+      },
+      {
+        short: "الجاهزية",
+        title: "جاهزة للعودة إلى البيت",
+        description: "تجفيف وتمشيط وفحص أخير؛ ثم لمعة صغيرة تقول إن الرحلة اكتملت.",
+        icon: "sparkles",
+      },
+    ],
+    en: [
+      {
+        short: "Inspect",
+        title: "Smart inspection",
+        description: "We identify the fabric, stains, and areas that need extra care.",
+        icon: "scan-search",
+      },
+      {
+        short: "Dust",
+        title: "Dust, be gone",
+        description: "Loose dust is shaken from the fibers before a single drop of water arrives.",
+        icon: "wind",
+      },
+      {
+        short: "Foam",
+        title: "Measured foam",
+        description: "The right cleaning solution is distributed evenly where it is needed.",
+        icon: "flask-conical",
+      },
+      {
+        short: "Scrub",
+        title: "The brush dance",
+        description: "Automated brushes move in balance to loosen dirt without guesswork.",
+        icon: "settings-2",
+      },
+      {
+        short: "Rinse",
+        title: "Rinse & extract",
+        description: "Foam and suspended dirt leave together as the colors return to life.",
+        icon: "waves",
+      },
+      {
+        short: "Ready",
+        title: "Ready to come home",
+        description: "Drying, grooming, and one last check—then a tiny sparkle says it is done.",
+        icon: "sparkles",
+      },
+    ],
+  };
+
+  const machine = root.querySelector("[data-machine-stage]");
+  const buttons = [...root.querySelectorAll("[data-lab-step]")];
+  const toggle = root.querySelector("[data-lab-toggle]");
+  const toggleLabel = root.querySelector("[data-lab-toggle-label]");
+  const title = root.querySelector("[data-lab-title]");
+  const description = root.querySelector("[data-lab-description]");
+  const counter = root.querySelector("[data-lab-counter]");
+  const icon = root.querySelector("[data-lab-icon]");
+  const progress = root.querySelector("[data-lab-progress]");
+  let active = 0;
+  let paused = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let timer = null;
+
+  const render = () => {
+    const language = currentLanguage();
+    const items = stages[language];
+    const stage = items[active];
+    machine.className = `machine-stage stage-${active + 1}`;
+    buttons.forEach((button, index) => {
+      const selected = index === active;
+      button.classList.toggle("active", selected);
+      button.setAttribute("aria-selected", String(selected));
+      const label = button.querySelector("strong");
+      if (label) label.textContent = items[index].short;
+    });
+    if (title) title.textContent = stage.title;
+    if (description) description.textContent = stage.description;
+    if (counter) {
+      counter.textContent =
+        language === "en"
+          ? `Stage ${active + 1} of ${items.length}`
+          : `المرحلة ${active + 1} من ${items.length}`;
+    }
+    if (icon) icon.innerHTML = `<i data-lucide="${stage.icon}"></i>`;
+    if (progress) progress.style.width = `${((active + 1) / items.length) * 100}%`;
+    if (toggleLabel) {
+      toggleLabel.textContent =
+        language === "en"
+          ? paused
+            ? "Play show"
+            : "Pause show"
+          : paused
+            ? "تشغيل العرض"
+            : "إيقاف العرض";
+    }
+    if (toggle) {
+      toggle.setAttribute("aria-pressed", String(paused));
+      const toggleIcon = toggle.querySelector("i, svg");
+      if (toggleIcon) toggleIcon.outerHTML = `<i data-lucide="${paused ? "play" : "pause"}"></i>`;
+    }
+    refreshIcons();
+  };
+
+  const schedule = () => {
+    clearInterval(timer);
+    if (paused) return;
+    timer = setInterval(() => {
+      active = (active + 1) % stages.ar.length;
+      render();
+    }, 3200);
+  };
+
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+      active = Number(button.dataset.labStep) || 0;
+      render();
+      schedule();
+    });
+  });
+
+  toggle?.addEventListener("click", () => {
+    paused = !paused;
+    render();
+    schedule();
+  });
+
+  document.addEventListener("quality:languagechange", render);
+  render();
+  schedule();
+}
+
 function initGlobalLinks() {
   document.querySelectorAll("[data-whatsapp]").forEach((link) => {
     const customMessage = link.dataset.message;
-    link.href = whatsappUrl(
+    const message =
       customMessage ||
-        `السلام عليكم، أرغب في الاستفسار عن خدمات ${CONFIG.businessName}.`,
+      (currentLanguage() === "en"
+        ? "Hello, I would like to ask about Al Joudah Automated Laundry services."
+        : `السلام عليكم، أرغب في الاستفسار عن خدمات ${CONFIG.businessName}.`);
+    link.href = whatsappUrl(
+      currentLanguage() === "en" ? translate(message) : message,
     );
     link.target = "_blank";
     link.rel = "noopener noreferrer";
@@ -95,6 +342,21 @@ function initHeader() {
   const scrollTop = document.querySelector("[data-scroll-top]");
   const menu = document.querySelector("[data-nav-links]");
   const toggle = document.querySelector("[data-menu-toggle]");
+  const updateMenuLabel = () => {
+    if (!toggle) return;
+    const open = Boolean(menu?.classList.contains("open"));
+    const english = currentLanguage() === "en";
+    toggle.setAttribute(
+      "aria-label",
+      english
+        ? open
+          ? "Close navigation menu"
+          : "Open navigation menu"
+        : open
+          ? "إغلاق قائمة التنقل"
+          : "فتح قائمة التنقل",
+    );
+  };
 
   const updateScroll = () => {
     const top = window.scrollY;
@@ -114,10 +376,7 @@ function initHeader() {
     const open = menu?.classList.toggle("open");
     document.body.classList.toggle("menu-open", Boolean(open));
     toggle.setAttribute("aria-expanded", String(Boolean(open)));
-    toggle.setAttribute(
-      "aria-label",
-      open ? "إغلاق قائمة التنقل" : "فتح قائمة التنقل",
-    );
+    updateMenuLabel();
     toggle.innerHTML = `<i data-lucide="${open ? "x" : "menu"}"></i>`;
     refreshIcons();
   });
@@ -128,9 +387,12 @@ function initHeader() {
       document.body.classList.remove("menu-open");
       toggle?.setAttribute("aria-expanded", "false");
       if (toggle) toggle.innerHTML = '<i data-lucide="menu"></i>';
+      updateMenuLabel();
       refreshIcons();
     });
   });
+
+  document.addEventListener("quality:languagechange", updateMenuLabel);
 
   scrollTop?.addEventListener("click", () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -263,6 +525,14 @@ function initQuickOrder() {
 
 let calculatorItems = [];
 
+function removeQualityCarpet(targetIndex) {
+  const index = Number(targetIndex);
+  if (!Number.isInteger(index) || index < 0 || index >= calculatorItems.length) return;
+  calculatorItems.splice(index, 1);
+  storage.set("quality_cart", calculatorItems);
+  renderCalculator();
+}
+
 function calculatorTotals() {
   const totalArea = calculatorItems.reduce((sum, item) => sum + item.area, 0);
   const total = totalArea * CONFIG.pricePerSquareMeter;
@@ -283,12 +553,12 @@ function renderCalculator() {
       (item, index) => `
         <div class="carpet-line">
           <div>
-            <strong>سجادة ${formatNumber(index + 1)}</strong>
-            <span>${formatNumber(item.length, 1)} × ${formatNumber(item.width, 1)} م</span>
-            <span>${formatNumber(item.area, 2)} م²</span>
-            <span>${formatNumber(item.area * CONFIG.pricePerSquareMeter)} ر.س</span>
+            <strong>${translate("سجادة")} ${formatNumber(index + 1)}</strong>
+            <span>${formatNumber(item.length, 1)} × ${formatNumber(item.width, 1)} ${currentLanguage() === "en" ? "m" : "م"}</span>
+            <span>${formatNumber(item.area, 2)} ${currentLanguage() === "en" ? "m²" : "م²"}</span>
+            <span>${formatNumber(item.area * CONFIG.pricePerSquareMeter)} ${currentLanguage() === "en" ? "SAR" : "ر.س"}</span>
           </div>
-          <button class="icon-btn" type="button" data-remove-carpet="${item.id}" aria-label="حذف السجادة">
+          <button class="icon-btn" type="button" data-remove-carpet="${index}" onclick="removeQualityCarpet(${index})" aria-label="${currentLanguage() === "en" ? "Remove carpet" : "حذف السجادة"}">
             <i data-lucide="trash-2"></i>
           </button>
         </div>
@@ -298,18 +568,14 @@ function renderCalculator() {
 
   empty?.classList.toggle("hidden", calculatorItems.length > 0);
   if (count) count.textContent = formatNumber(calculatorItems.length);
-  if (area) area.textContent = `${formatNumber(totalArea, 2)} م²`;
-  if (total) total.innerHTML = `${formatNumber(totalPrice)} <small>ر.س تقريباً</small>`;
+  if (area) {
+    area.textContent = `${formatNumber(totalArea, 2)} ${currentLanguage() === "en" ? "m²" : "م²"}`;
+  }
+  if (total) {
+    total.innerHTML = `${formatNumber(totalPrice)} <small>${currentLanguage() === "en" ? "SAR approx." : "ر.س تقريباً"}</small>`;
+  }
 
-  list.querySelectorAll("[data-remove-carpet]").forEach((button) => {
-    button.addEventListener("click", () => {
-      calculatorItems = calculatorItems.filter(
-        (item) => item.id !== Number(button.dataset.removeCarpet),
-      );
-      storage.set("quality_cart", calculatorItems);
-      renderCalculator();
-    });
-  });
+  window.QualityI18n?.apply(list);
   refreshIcons();
 }
 
@@ -382,6 +648,24 @@ function createOrderCode() {
 }
 
 function bookingMessage(order) {
+  if (currentLanguage() === "en") {
+    return [
+      "Hello, this is a new request from the Al Joudah Automated Laundry website:",
+      `Order number: ${order.code}`,
+      `Name: ${order.name}`,
+      `Mobile: ${order.phone}`,
+      `Service: ${translate(order.service)}`,
+      `District: ${order.district}`,
+      `Preferred date: ${order.date || "To be confirmed"}`,
+      `Handover: ${translate(order.fulfilment)}`,
+      `Carpets: ${order.items.length}`,
+      `Total area: ${order.area.toFixed(2)} m²`,
+      `Initial estimate: ${Math.round(order.estimate)} SAR`,
+      `Notes: ${order.notes || "None"}`,
+      "",
+      "Please confirm the appointment and final cost.",
+    ].join("\n");
+  }
   const lines = [
     `السلام عليكم، هذا طلب جديد من موقع ${CONFIG.businessName}:`,
     `رقم الطلب: ${order.code}`,
@@ -444,9 +728,13 @@ function initBooking() {
     const priceNode = document.querySelector("[data-booking-price]");
     const serviceNode = document.querySelector("[data-booking-service]");
     if (countNode) countNode.textContent = formatNumber(activeItems.length);
-    if (areaNode) areaNode.textContent = `${formatNumber(area, 2)} م²`;
-    if (priceNode) priceNode.textContent = `${formatNumber(estimate)} ر.س`;
-    if (serviceNode) serviceNode.textContent = service;
+    if (areaNode) {
+      areaNode.textContent = `${formatNumber(area, 2)} ${currentLanguage() === "en" ? "m²" : "م²"}`;
+    }
+    if (priceNode) {
+      priceNode.textContent = `${formatNumber(estimate)} ${currentLanguage() === "en" ? "SAR" : "ر.س"}`;
+    }
+    if (serviceNode) serviceNode.textContent = translate(service);
     return { activeItems, area, estimate, service };
   };
 
@@ -592,19 +880,24 @@ function renderTracking(order) {
 
   if (nodes.code) nodes.code.textContent = order.code;
   if (nodes.name) nodes.name.textContent = order.name;
-  if (nodes.service) nodes.service.textContent = order.service;
-  if (nodes.estimate) nodes.estimate.textContent = `${formatNumber(order.estimate)} ر.س`;
+  if (nodes.service) nodes.service.textContent = translate(order.service);
+  if (nodes.estimate) {
+    nodes.estimate.textContent = `${formatNumber(order.estimate)} ${currentLanguage() === "en" ? "SAR" : "ر.س"}`;
+  }
   if (nodes.date) {
     nodes.date.textContent = order.date
-      ? new Intl.DateTimeFormat("ar-SA", { dateStyle: "long" }).format(
+      ? new Intl.DateTimeFormat(currentLanguage() === "en" ? "en-US" : "ar-SA", {
+          dateStyle: "long",
+        }).format(
           new Date(`${order.date}T12:00:00`),
         )
-      : "يُحدد بالتواصل";
+      : translate("يُحدد بالتواصل");
   }
   if (nodes.note) {
-    nodes.note.textContent = order.demo
+    const note = order.demo
       ? "هذه معاينة توضيحية لشكل التتبع. الطلبات التي تُنشئها من صفحة الحجز تُحفظ وتظهر هنا على جهازك."
       : "تم استلام طلبك رقمياً. يُرجى إرسال تفاصيله عبر واتساب لتأكيد الموعد وتحديث الحالة مع فريق المغسلة.";
+    nodes.note.textContent = translate(note);
   }
 
   const status = Math.max(1, Math.min(5, Number(order.status) || 1));
@@ -618,7 +911,9 @@ function renderTracking(order) {
   const support = content?.querySelector("[data-track-support]");
   if (support) {
     support.href = whatsappUrl(
-      `السلام عليكم، أريد الاستفسار عن حالة الطلب رقم ${order.code}.`,
+      currentLanguage() === "en"
+        ? `Hello, I would like to ask about order ${order.code}.`
+        : `السلام عليكم، أريد الاستفسار عن حالة الطلب رقم ${order.code}.`,
     );
   }
   result.classList.remove("hidden");
@@ -648,7 +943,9 @@ function initTracking() {
       const help = empty?.querySelector("[data-missing-help]");
       if (help) {
         help.href = whatsappUrl(
-          `السلام عليكم، أحتاج مساعدة في العثور على طلبي. الرقم المدخل: ${code}`,
+          currentLanguage() === "en"
+            ? `Hello, I need help finding my order. Entered number: ${code}`
+            : `السلام عليكم، أحتاج مساعدة في العثور على طلبي. الرقم المدخل: ${code}`,
         );
       }
       refreshIcons();
@@ -689,14 +986,24 @@ function initBusinessForm() {
       return;
     }
 
-    const message = [
-      `السلام عليكم، أطلب عرضاً لخدمات المنشآت من ${CONFIG.businessName}.`,
-      `الاسم: ${name}`,
-      `الجوال: ${phone}`,
-      `المنشأة: ${organization}`,
-      `نوع المنشأة: ${type}`,
-      `تفاصيل الطلب: ${details || "تُناقش بالتواصل"}`,
-    ].join("\n");
+    const message =
+      currentLanguage() === "en"
+        ? [
+            "Hello, I would like a business-service quote from Al Joudah Automated Laundry.",
+            `Name: ${name}`,
+            `Mobile: ${phone}`,
+            `Business: ${organization}`,
+            `Business type: ${translate(type)}`,
+            `Request details: ${details || "To be discussed"}`,
+          ].join("\n")
+        : [
+            `السلام عليكم، أطلب عرضاً لخدمات المنشآت من ${CONFIG.businessName}.`,
+            `الاسم: ${name}`,
+            `الجوال: ${phone}`,
+            `المنشأة: ${organization}`,
+            `نوع المنشأة: ${type}`,
+            `تفاصيل الطلب: ${details || "تُناقش بالتواصل"}`,
+          ].join("\n");
 
     window.open(whatsappUrl(message), "_blank", "noopener,noreferrer");
   });
@@ -719,13 +1026,22 @@ function initContactForm() {
       return;
     }
 
-    const text = [
-      `السلام عليكم، لدي استفسار عبر موقع ${CONFIG.businessName}.`,
-      `الاسم: ${name}`,
-      `الجوال: ${phone}`,
-      `نوع الاستفسار: ${subject}`,
-      `التفاصيل: ${message}`,
-    ].join("\n");
+    const text =
+      currentLanguage() === "en"
+        ? [
+            "Hello, I have an inquiry through the Al Joudah Automated Laundry website.",
+            `Name: ${name}`,
+            `Mobile: ${phone}`,
+            `Inquiry type: ${translate(subject)}`,
+            `Details: ${message}`,
+          ].join("\n")
+        : [
+            `السلام عليكم، لدي استفسار عبر موقع ${CONFIG.businessName}.`,
+            `الاسم: ${name}`,
+            `الجوال: ${phone}`,
+            `نوع الاستفسار: ${subject}`,
+            `التفاصيل: ${message}`,
+          ].join("\n");
 
     window.open(whatsappUrl(text), "_blank", "noopener,noreferrer");
   });
@@ -746,9 +1062,13 @@ function initRecentOrder() {
 document.addEventListener("DOMContentLoaded", () => {
   initGlobalLinks();
   initHeader();
+  initPreferenceControls();
+  injectDeveloperCredit();
+  window.QualityI18n?.init();
   initReveal();
   initFaq();
   initTabs();
+  initWashLab();
   initQuickOrder();
   initCalculator();
   initBooking();
@@ -756,7 +1076,9 @@ document.addEventListener("DOMContentLoaded", () => {
   initBusinessForm();
   initContactForm();
   initRecentOrder();
+  window.QualityI18n?.apply();
   refreshIcons();
 });
 
 window.CONFIG = CONFIG;
+window.removeQualityCarpet = removeQualityCarpet;

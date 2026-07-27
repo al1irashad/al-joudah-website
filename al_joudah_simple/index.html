@@ -2,6 +2,7 @@
 <html lang="ar" dir="rtl">
   <head>
     <meta charset="UTF-8" />
+    <script src="preferences.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#071b31" />
     <meta
@@ -407,6 +408,110 @@
                   <h3>التجفيف والتمشيط</h3>
                   <p>إنهاء العناية وتجهيز الألياف قبل التسليم.</p>
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section wash-lab-section" data-wash-lab>
+        <div class="container">
+          <div class="section-head wash-lab-head">
+            <div>
+              <span class="eyebrow reveal" data-lab-eyebrow>شاهد الجودة وهي تعمل</span>
+              <h2 class="reveal" data-lab-heading>رحلة صغيرة لسجادة... ونتيجة كبيرة.</h2>
+              <p class="reveal" data-lab-intro>
+                اضغط على أي مرحلة أو اترك العرض يعمل تلقائياً، وشاهد كيف تنتقل
+                السجادة من الفحص إلى لحظة الجاهزية.
+              </p>
+            </div>
+            <button class="btn btn-ghost reveal" type="button" data-lab-toggle aria-pressed="false">
+              <i data-lucide="pause"></i>
+              <span data-lab-toggle-label>إيقاف العرض</span>
+            </button>
+          </div>
+
+          <div class="wash-lab reveal">
+            <div class="machine-stage stage-1" data-machine-stage aria-live="polite">
+              <div class="lab-sky" aria-hidden="true">
+                <span class="lab-cloud cloud-one"></span>
+                <span class="lab-cloud cloud-two"></span>
+              </div>
+              <div class="lab-floor" aria-hidden="true"></div>
+
+              <div class="wash-machine" aria-hidden="true">
+                <div class="machine-top">
+                  <span class="machine-light"></span>
+                  <span class="machine-light"></span>
+                  <span class="machine-light"></span>
+                </div>
+                <div class="machine-body">
+                  <div class="machine-window">
+                    <span class="machine-swirl"></span>
+                    <span class="bubble bubble-one"></span>
+                    <span class="bubble bubble-two"></span>
+                    <span class="bubble bubble-three"></span>
+                  </div>
+                  <div class="machine-brushes">
+                    <span></span><span></span><span></span><span></span>
+                  </div>
+                </div>
+                <div class="machine-legs"><span></span><span></span></div>
+              </div>
+
+              <div class="carpet-conveyor" aria-hidden="true">
+                <div class="conveyor-belt">
+                  <span></span><span></span><span></span><span></span><span></span>
+                </div>
+                <div class="animated-carpet">
+                  <span class="carpet-pattern"></span>
+                  <span class="carpet-stain stain-one"></span>
+                  <span class="carpet-stain stain-two"></span>
+                  <span class="carpet-shine shine-one"></span>
+                  <span class="carpet-shine shine-two"></span>
+                </div>
+              </div>
+
+              <div class="lab-character inspector-character" aria-hidden="true">
+                <span class="character-head"></span>
+                <span class="character-body"></span>
+                <span class="character-arm"></span>
+                <span class="character-lens"></span>
+              </div>
+
+              <div class="lab-status-card">
+                <span class="lab-status-icon"><i data-lab-icon data-lucide="scan-search"></i></span>
+                <div>
+                  <small data-lab-counter>المرحلة 1 من 6</small>
+                  <h3 data-lab-title>الفحص الذكي</h3>
+                  <p data-lab-description>نتعرّف على النسيج والبقع والمناطق التي تحتاج عناية إضافية.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="lab-controls">
+              <div class="lab-progress" aria-hidden="true">
+                <span data-lab-progress></span>
+              </div>
+              <div class="lab-step-buttons" role="tablist" aria-label="مراحل تنظيف السجاد">
+                <button class="lab-step-button active" type="button" data-lab-step="0" aria-selected="true">
+                  <span>01</span><i data-lucide="scan-search"></i><strong>الفحص</strong>
+                </button>
+                <button class="lab-step-button" type="button" data-lab-step="1" aria-selected="false">
+                  <span>02</span><i data-lucide="wind"></i><strong>الغبار</strong>
+                </button>
+                <button class="lab-step-button" type="button" data-lab-step="2" aria-selected="false">
+                  <span>03</span><i data-lucide="flask-conical"></i><strong>المنظف</strong>
+                </button>
+                <button class="lab-step-button" type="button" data-lab-step="3" aria-selected="false">
+                  <span>04</span><i data-lucide="settings-2"></i><strong>الفرك</strong>
+                </button>
+                <button class="lab-step-button" type="button" data-lab-step="4" aria-selected="false">
+                  <span>05</span><i data-lucide="waves"></i><strong>الشطف</strong>
+                </button>
+                <button class="lab-step-button" type="button" data-lab-step="5" aria-selected="false">
+                  <span>06</span><i data-lucide="sparkles"></i><strong>الجاهزية</strong>
+                </button>
               </div>
             </div>
           </div>
@@ -890,6 +995,7 @@
     </div>
 
     <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
+    <script src="i18n.js"></script>
     <script src="script.js"></script>
   </body>
 </html>
