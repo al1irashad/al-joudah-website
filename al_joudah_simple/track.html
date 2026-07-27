@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#071b31" />
+    <meta name="description" content="اعرض الطلبات التي أنشأتها من موقع مغاسل الجودة الآلية وتواصل مع الفريق لتأكيد حالتها." />
+    <meta name="robots" content="index,follow" />
+    <title>تتبّع الطلب | مغاسل الجودة الآلية</title>
+    <link rel="icon" href="favicon-96.png" type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@500;600;700;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">انتقل إلى المحتوى</a>
+    <div class="scroll-progress" data-scroll-progress></div>
+    <div class="topbar"><div class="container"><div class="topbar-list"><span class="topbar-item"><i data-lucide="map-pin"></i> جدة، حي الحمدانية</span><span class="topbar-item"><i data-lucide="clock-3"></i> السبت – الخميس، 10 ص – 10 م</span></div><a class="topbar-item" data-call href="#"><i data-lucide="phone"></i><span dir="ltr">056 301 0660</span></a></div></div>
+    <header class="site-header">
+      <div class="container navbar">
+        <a class="brand" href="index.html"><img class="brand-mark" src="logo.jpg" alt="شعار مغاسل الجودة الآلية" /><span class="brand-name">مغاسل الجودة الآلية<small>عناية متخصصة بالسجاد</small></span></a>
+        <nav class="nav-links" data-nav-links aria-label="التنقل الرئيسي"><a href="index.html">الرئيسية</a><a href="services.html">الخدمات</a><a href="booking.html">احسب واحجز</a><a href="track.html">تتبّع الطلب</a><a href="business.html">قطاع الأعمال</a><a href="about.html">عن الجودة</a><a href="contact.html">تواصل معنا</a></nav>
+        <div class="nav-actions"><a class="btn btn-primary btn-sm" href="booking.html"><i data-lucide="calendar-check-2"></i> طلب جديد</a><button class="menu-toggle" type="button" data-menu-toggle aria-label="فتح قائمة التنقل" aria-expanded="false"><i data-lucide="menu"></i></button></div>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="page-hero">
+        <div class="container page-hero-inner">
+          <div class="breadcrumb"><a href="index.html">الرئيسية</a><i data-lucide="chevron-left"></i><span>تتبّع الطلب</span></div>
+          <span class="eyebrow">رحلة واضحة</span>
+          <h1>رقم واحد، وكل تفاصيلك أمامك.</h1>
+          <p>أدخل رقم الطلب الذي أنشأته من صفحة الحجز لعرض ملخصه المحفوظ على هذا الجهاز، ثم تواصل مع الفريق لتأكيد حالته الفعلية.</p>
+        </div>
+      </section>
+
+      <section class="section section-soft">
+        <div class="container">
+          <div class="track-search reveal">
+            <div class="track-panel">
+              <form class="track-form" data-track-form>
+                <label class="hidden" for="track-code">رقم الطلب</label>
+                <input class="track-input" id="track-code" type="text" dir="ltr" autocomplete="off" placeholder="مثال: QD-260727-AB12" />
+                <button class="btn btn-primary" type="submit"><i data-lucide="search"></i> عرض الطلب</button>
+              </form>
+              <p class="muted-note" style="margin: 12px 0 0">للاطلاع على شكل التجربة قبل إنشاء طلب، استخدم الرمز <strong dir="ltr">QD-DEMO</strong>.</p>
+            </div>
+          </div>
+
+          <div class="tracking-result hidden" data-tracking-result>
+            <div class="booking-panel hidden" data-tracking-empty>
+              <div class="success-card">
+                <span class="success-icon" style="background: var(--red)"><i data-lucide="search-x"></i></span>
+                <h2>لم نجد هذا الطلب على جهازك.</h2>
+                <p>تأكد من كتابة الرقم كما ظهر لك، أو تواصل مع المغسلة وأرسل الرقم المدخل للمساعدة.</p>
+                <a class="btn btn-primary" data-missing-help href="#" target="_blank" rel="noopener noreferrer"><i data-lucide="message-circle"></i> طلب مساعدة عبر واتساب</a>
+              </div>
+            </div>
+
+            <div class="booking-panel hidden" data-tracking-content>
+              <div class="section-head" style="margin-bottom: 25px">
+                <div>
+                  <span class="eyebrow">تفاصيل الطلب</span>
+                  <h2 style="font-size: clamp(1.8rem, 3vw, 2.7rem); margin-bottom: 7px">الطلب <span data-track-code dir="ltr">QD-000000-0000</span></h2>
+                  <p style="margin: 0">مرحباً <strong data-track-name>عميل الجودة</strong>، إليك البيانات المحفوظة.</p>
+                </div>
+                <a class="btn btn-ghost btn-sm" data-track-support href="#" target="_blank" rel="noopener noreferrer"><i data-lucide="headset"></i> اسأل عن الحالة</a>
+              </div>
+
+              <div class="timeline">
+                <div class="timeline-progress" data-timeline-progress></div>
+                <div class="timeline-step active" data-timeline-step="1"><span class="timeline-dot"><i data-lucide="clipboard-check"></i></span><span>طلب مسجل</span></div>
+                <div class="timeline-step" data-timeline-step="2"><span class="timeline-dot"><i data-lucide="scan-search"></i></span><span>قيد الفحص</span></div>
+                <div class="timeline-step" data-timeline-step="3"><span class="timeline-dot"><i data-lucide="settings-2"></i></span><span>قيد التنظيف</span></div>
+                <div class="timeline-step" data-timeline-step="4"><span class="timeline-dot"><i data-lucide="wind"></i></span><span>التجفيف</span></div>
+                <div class="timeline-step" data-timeline-step="5"><span class="timeline-dot"><i data-lucide="package-check"></i></span><span>جاهز</span></div>
+              </div>
+
+              <div class="care-table">
+                <div class="care-row head"><span>الخدمة</span><span>الموعد المفضل</span><span>التقدير</span></div>
+                <div class="care-row"><span data-track-service>تنظيف سجاد منزلي</span><span data-track-date>يُحدد بالتواصل</span><span data-track-estimate>0 ر.س</span></div>
+              </div>
+
+              <div class="contact-line" style="margin-top: 24px">
+                <span><i data-lucide="info"></i></span>
+                <div><strong>ملاحظة مهمة</strong><small data-track-note>يُرجى التواصل مع الفريق لتأكيد الحالة.</small></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="section-head">
+            <div><span class="eyebrow reveal">كيف يعمل التتبع؟</span><h2 class="reveal">من الطلب الرقمي إلى التأكيد البشري.</h2><p class="reveal">التجربة الحالية تحفظ طلبك على جهازك وتعرضه لك، بينما تأكيد الموعد والحالة الفعلية يتم مباشرة مع فريق المغسلة.</p></div>
+          </div>
+          <div class="service-grid">
+            <article class="service-card reveal"><span class="service-icon"><i data-lucide="file-plus-2"></i></span><h3>أنشئ الطلب</h3><p>أدخل المقاسات وبيانات التواصل لتحصل على رقم طلب فريد.</p><a class="text-link" href="booking.html">إنشاء طلب <i data-lucide="arrow-left"></i></a></article>
+            <article class="service-card reveal reveal-delay-1"><span class="service-icon"><i data-lucide="save"></i></span><h3>احتفظ بالرقم</h3><p>يُحفظ الطلب على جهازك لتفتحه لاحقاً من هذه الصفحة.</p></article>
+            <article class="service-card featured reveal reveal-delay-2"><span class="service-icon"><i data-lucide="message-circle-check"></i></span><h3>أكّد مع الفريق</h3><p>أرسل ملخص الطلب عبر واتساب لتأكيد الموعد والتكلفة والحالة.</p><a class="text-link" data-whatsapp href="#">تواصل الآن <i data-lucide="arrow-left"></i></a></article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-about"><a class="brand" href="index.html"><img class="brand-mark" src="logo.jpg" alt="" /><span class="brand-name">مغاسل الجودة الآلية<small>عناية متخصصة بالسجاد</small></span></a><p>تنظيف متخصص للسجاد في جدة بسعر أساسي معلن وتجربة رقمية سهلة.</p><div class="footer-social"><a data-whatsapp href="#" aria-label="واتساب"><i data-lucide="message-circle"></i></a><a data-call href="#" aria-label="اتصال"><i data-lucide="phone"></i></a><a data-maps href="#" aria-label="الموقع"><i data-lucide="map-pin"></i></a></div></div>
+          <div class="footer-col"><h3>اكتشف</h3><ul class="footer-links"><li><a href="services.html">الخدمات</a></li><li><a href="booking.html">حاسبة السعر والحجز</a></li><li><a href="track.html">تتبّع الطلب</a></li><li><a href="about.html">عن الجودة</a></li></ul></div>
+          <div class="footer-col"><h3>للمنشآت</h3><ul class="footer-links"><li><a href="business.html">حلول قطاع الأعمال</a></li><li><a href="business.html#sectors">الفنادق والمكاتب</a></li><li><a href="business.html#quote">اطلب عرضاً</a></li></ul></div>
+          <div class="footer-col"><h3>تواصل</h3><ul class="footer-links"><li class="footer-contact-item"><i data-lucide="phone"></i><a data-call href="#" dir="ltr">056 301 0660</a></li><li class="footer-contact-item"><i data-lucide="map-pin"></i><a data-maps href="#">2975 شارع الحمدانية، جدة</a></li><li class="footer-contact-item"><i data-lucide="clock-3"></i><span>السبت – الخميس<br />10 ص – 10 م</span></li></ul></div>
+        </div>
+        <div class="footer-bottom"><span>© <span data-year></span> مغاسل الجودة الآلية.</span><span>الحالة الفعلية تُؤكد مع فريق المغسلة</span></div>
+      </div>
+    </footer>
+    <div class="floating-actions"><button class="float-btn scroll-top" type="button" data-scroll-top aria-label="إلى أعلى"><i data-lucide="arrow-up"></i></button><a class="float-btn" data-whatsapp href="#" aria-label="واتساب"><i data-lucide="message-circle"></i></a></div>
+    <div class="mobile-order-bar"><a class="btn btn-primary" href="booking.html"><i data-lucide="calendar-plus"></i> طلب جديد</a><a class="btn btn-yellow" data-call href="#"><i data-lucide="phone"></i> اتصل الآن</a></div>
+    <div class="toast" data-toast role="status" aria-live="polite"><i data-lucide="sparkles"></i><span>تم</span></div>
+    <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

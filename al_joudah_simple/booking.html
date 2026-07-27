@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#071b31" />
+    <meta name="description" content="احسب تكلفة تنظيف السجاد وقدّم طلباً رقمياً إلى مغاسل الجودة الآلية في جدة." />
+    <meta name="robots" content="index,follow" />
+    <title>احسب واحجز | مغاسل الجودة الآلية</title>
+    <link rel="icon" href="favicon-96.png" type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@500;600;700;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">انتقل إلى المحتوى</a>
+    <div class="scroll-progress" data-scroll-progress></div>
+
+    <div class="topbar">
+      <div class="container">
+        <div class="topbar-list"><span class="topbar-item"><i data-lucide="map-pin"></i> جدة، حي الحمدانية</span><span class="topbar-item"><i data-lucide="clock-3"></i> السبت – الخميس، 10 ص – 10 م</span></div>
+        <a class="topbar-item" data-call href="#"><i data-lucide="phone"></i><span dir="ltr">056 301 0660</span></a>
+      </div>
+    </div>
+    <header class="site-header">
+      <div class="container navbar">
+        <a class="brand" href="index.html"><img class="brand-mark" src="logo.jpg" alt="شعار مغاسل الجودة الآلية" /><span class="brand-name">مغاسل الجودة الآلية<small>عناية متخصصة بالسجاد</small></span></a>
+        <nav class="nav-links" data-nav-links aria-label="التنقل الرئيسي">
+          <a href="index.html">الرئيسية</a><a href="services.html">الخدمات</a><a href="booking.html">احسب واحجز</a><a href="track.html">تتبّع الطلب</a><a href="business.html">قطاع الأعمال</a><a href="about.html">عن الجودة</a><a href="contact.html">تواصل معنا</a>
+        </nav>
+        <div class="nav-actions"><a class="btn btn-primary btn-sm" data-whatsapp data-message="السلام عليكم، أحتاج مساعدة في تقديم طلب تنظيف سجاد." href="#"><i data-lucide="message-circle"></i> مساعدة</a><button class="menu-toggle" type="button" data-menu-toggle aria-label="فتح قائمة التنقل" aria-expanded="false"><i data-lucide="menu"></i></button></div>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="page-hero">
+        <div class="container page-hero-inner">
+          <div class="breadcrumb"><a href="index.html">الرئيسية</a><i data-lucide="chevron-left"></i><span>احسب واحجز</span></div>
+          <span class="eyebrow">3 خطوات بسيطة</span>
+          <h1>من المقاس إلى الطلب، في دقائق.</h1>
+          <p>أدخل الخدمة والمقاسات وبيانات التواصل. سننشئ لك رقماً وملخصاً جاهزاً لإرساله عبر واتساب وتأكيده مع فريق المغسلة.</p>
+        </div>
+      </section>
+
+      <section class="section section-soft" data-booking>
+        <div class="container">
+          <div class="booking-shell">
+            <div class="booking-panel">
+              <div class="wizard-steps" aria-label="خطوات الطلب">
+                <div class="wizard-step active" data-wizard-step="1"><span class="wizard-dot">1</span><span>الخدمة والمقاس</span></div>
+                <div class="wizard-step" data-wizard-step="2"><span class="wizard-dot">2</span><span>العنوان والموعد</span></div>
+                <div class="wizard-step" data-wizard-step="3"><span class="wizard-dot">3</span><span>المراجعة</span></div>
+              </div>
+
+              <form novalidate>
+                <div class="wizard-page active" data-wizard-page="1">
+                  <span class="eyebrow">الخطوة الأولى</span>
+                  <h2>ما نوع الخدمة؟</h2>
+                  <p>اختر الوصف الأقرب لاحتياجك. سيؤكد الفريق التفاصيل النهائية معك.</p>
+
+                  <div class="option-grid">
+                    <div class="option-card">
+                      <input id="service-home" type="radio" name="service" value="تنظيف سجاد منزلي" checked />
+                      <label for="service-home"><i data-lucide="house"></i><span><strong>سجاد منزلي</strong><small>غرف المعيشة والمجالس وغرف النوم</small></span></label>
+                    </div>
+                    <div class="option-card">
+                      <input id="service-premium" type="radio" name="service" value="عناية بسجاد فاخر" />
+                      <label for="service-premium"><i data-lucide="gem"></i><span><strong>سجاد فاخر</strong><small>يتطلب فحص الخامة والصور أولاً</small></span></label>
+                    </div>
+                    <div class="option-card">
+                      <input id="service-business" type="radio" name="service" value="تنظيف سجاد منشأة" />
+                      <label for="service-business"><i data-lucide="building-2"></i><span><strong>سجاد منشأة</strong><small>مكاتب ومحلات وفنادق</small></span></label>
+                    </div>
+                    <div class="option-card">
+                      <input id="service-mosque" type="radio" name="service" value="تنظيف سجاد مسجد أو مركز" />
+                      <label for="service-mosque"><i data-lucide="landmark"></i><span><strong>مسجد أو مركز</strong><small>تنسيق بعد مراجعة المساحة</small></span></label>
+                    </div>
+                  </div>
+
+                  <div style="height: 28px"></div>
+                  <h3>مقاس سجادة واحدة</h3>
+                  <p class="muted-note">إذا أضفت عدة سجاد من حاسبة الصفحة الرئيسية فسيظهر مجموعها في ملخص الطلب. وإلا أدخل مقاس السجادة هنا.</p>
+                  <div class="form-row">
+                    <div class="field">
+                      <label for="booking-length">الطول بالمتر</label>
+                      <input id="booking-length" name="booking_length" type="text" inputmode="decimal" placeholder="مثال: 3.5" />
+                    </div>
+                    <div class="field">
+                      <label for="booking-width">العرض بالمتر</label>
+                      <input id="booking-width" name="booking_width" type="text" inputmode="decimal" placeholder="مثال: 2" />
+                    </div>
+                  </div>
+
+                  <div class="wizard-nav">
+                    <span></span>
+                    <button class="btn btn-primary" type="button" data-next-step>التالي: بيانات الاستلام <i data-lucide="arrow-left"></i></button>
+                  </div>
+                </div>
+
+                <div class="wizard-page" data-wizard-page="2">
+                  <span class="eyebrow">الخطوة الثانية</span>
+                  <h2>كيف نتواصل معك؟</h2>
+                  <p>تُستخدم هذه البيانات في ملخص الطلب الذي سترسله للمغسلة.</p>
+
+                  <div class="form-row">
+                    <div class="field">
+                      <label for="customer-name">الاسم الكامل</label>
+                      <input id="customer-name" name="name" type="text" autocomplete="name" placeholder="اكتب اسمك" />
+                    </div>
+                    <div class="field">
+                      <label for="customer-phone">رقم الجوال</label>
+                      <input id="customer-phone" name="phone" type="tel" inputmode="tel" dir="ltr" autocomplete="tel" placeholder="05xxxxxxxx" />
+                    </div>
+                  </div>
+
+                  <div class="form-row">
+                    <div class="field">
+                      <label for="customer-district">الحي في جدة</label>
+                      <input id="customer-district" name="district" type="text" autocomplete="address-level3" placeholder="مثال: الحمدانية" />
+                    </div>
+                    <div class="field">
+                      <label for="booking-date">اليوم المفضل</label>
+                      <input id="booking-date" name="date" type="date" />
+                    </div>
+                  </div>
+
+                  <div class="field">
+                    <span class="field-label">طريقة تسليم السجاد</span>
+                    <div class="option-grid">
+                      <div class="option-card">
+                        <input id="fulfilment-branch" type="radio" name="fulfilment" value="تسليم إلى الفرع" checked />
+                        <label for="fulfilment-branch"><i data-lucide="map-pin"></i><span><strong>تسليم إلى الفرع</strong><small>حي الحمدانية، جدة</small></span></label>
+                      </div>
+                      <div class="option-card">
+                        <input id="fulfilment-pickup" type="radio" name="fulfilment" value="طلب تنسيق استلام" />
+                        <label for="fulfilment-pickup"><i data-lucide="truck"></i><span><strong>تنسيق استلام</strong><small>يؤكد الفريق التوفر والتفاصيل</small></span></label>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="field">
+                    <label for="booking-notes">ملاحظات أو وصف البقع</label>
+                    <textarea id="booking-notes" name="notes" placeholder="مثال: توجد بقعة قهوة في أحد الأطراف، وسأرسل الصور عبر واتساب."></textarea>
+                  </div>
+
+                  <div class="wizard-nav">
+                    <button class="btn btn-ghost" type="button" data-prev-step><i data-lucide="arrow-right"></i> السابق</button>
+                    <button class="btn btn-primary" type="button" data-next-step>التالي: مراجعة الطلب <i data-lucide="arrow-left"></i></button>
+                  </div>
+                </div>
+
+                <div class="wizard-page" data-wizard-page="3">
+                  <span class="eyebrow">الخطوة الأخيرة</span>
+                  <h2>راجع الملخص ثم أنشئ طلبك.</h2>
+                  <p>
+                    عند الضغط على إنشاء الطلب، يُحفظ رقمه وبياناته على هذا الجهاز
+                    لتتمكن من فتح صفحة التتبع. بعد ذلك أرسل الملخص عبر واتساب
+                    لتأكيد الموعد والتكلفة مع الفريق.
+                  </p>
+                  <div class="contact-cards">
+                    <div class="contact-line"><span><i data-lucide="badge-info"></i></span><div><strong>التقدير ليس فاتورة نهائية</strong><small>السعر النهائي يؤكد بعد مراجعة المقاسات والحالة.</small></div></div>
+                    <div class="contact-line"><span><i data-lucide="smartphone"></i></span><div><strong>لا يوجد دفع إلكتروني</strong><small>هذه التجربة تنشئ الطلب والملخص فقط ولا تجمع أي بيانات دفع.</small></div></div>
+                    <div class="contact-line"><span><i data-lucide="message-circle-check"></i></span><div><strong>تأكيد مباشر عبر واتساب</strong><small>ستجد زر إرسال التفاصيل بعد إنشاء الطلب.</small></div></div>
+                  </div>
+                  <div class="wizard-nav">
+                    <button class="btn btn-ghost" type="button" data-prev-step><i data-lucide="arrow-right"></i> تعديل البيانات</button>
+                    <button class="btn btn-yellow" type="button" data-submit-booking><i data-lucide="badge-check"></i> إنشاء رقم الطلب</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+
+            <aside class="booking-summary">
+              <div class="summary-head">
+                <h3>ملخص السعر</h3>
+                <p>يُحدّث تلقائياً أثناء إدخال البيانات</p>
+              </div>
+              <div class="summary-body">
+                <div class="summary-line"><span>نوع الخدمة</span><strong data-booking-service>تنظيف سجاد منزلي</strong></div>
+                <div class="summary-line"><span>عدد السجاد</span><strong data-booking-count>0</strong></div>
+                <div class="summary-line"><span>إجمالي المساحة</span><strong data-booking-area>0 م²</strong></div>
+                <div class="summary-line"><span>السعر الأساسي</span><strong>8 ر.س / م²</strong></div>
+                <div class="summary-total"><span>التقدير</span><strong data-booking-price>0 ر.س</strong></div>
+                <p class="muted-note">يُؤكد السعر النهائي بعد مراجعة المقاس والحالة وأي متطلبات خاصة.</p>
+              </div>
+            </aside>
+          </div>
+
+          <div class="booking-panel success-card hidden" data-booking-success>
+            <span class="success-icon"><i data-lucide="check-check"></i></span>
+            <span class="eyebrow">تم إنشاء الطلب على جهازك</span>
+            <h2>بقي تأكيده مع فريق المغسلة.</h2>
+            <p>احتفظ برقم الطلب، ثم أرسل التفاصيل عبر واتساب ليؤكد الفريق الموعد والتكلفة النهائية.</p>
+            <div class="order-code"><span data-success-code>QD-000000-0000</span><button class="icon-btn" type="button" data-copy-code aria-label="نسخ رقم الطلب"><i data-lucide="copy"></i></button></div>
+            <div class="hero-actions" style="justify-content: center; margin-bottom: 0">
+              <a class="btn btn-primary" data-send-order href="#" target="_blank" rel="noopener noreferrer"><i data-lucide="send"></i> إرسال التفاصيل عبر واتساب</a>
+              <a class="btn btn-ghost" href="track.html"><i data-lucide="route"></i> فتح صفحة التتبع</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-tight">
+        <div class="container cta-panel reveal">
+          <div><h2>تفضّل التواصل المباشر؟</h2><p>يمكنك إرسال أبعاد السجاد وصوره عبر واتساب، وسيُراجع الفريق التفاصيل معك.</p></div>
+          <div class="cta-actions"><a class="btn btn-yellow" data-whatsapp data-message="السلام عليكم، أريد تقديم طلب تنظيف سجاد وسأرسل المقاسات والصور." href="#"><i data-lucide="message-circle"></i> واتساب</a><a class="btn btn-ghost" data-call href="#"><i data-lucide="phone"></i> اتصال</a></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-about"><a class="brand" href="index.html"><img class="brand-mark" src="logo.jpg" alt="" /><span class="brand-name">مغاسل الجودة الآلية<small>عناية متخصصة بالسجاد</small></span></a><p>تنظيف متخصص للسجاد في جدة بسعر أساسي معلن وتجربة طلب سهلة.</p><div class="footer-social"><a data-whatsapp href="#" aria-label="واتساب"><i data-lucide="message-circle"></i></a><a data-call href="#" aria-label="اتصال"><i data-lucide="phone"></i></a><a data-maps href="#" aria-label="الموقع"><i data-lucide="map-pin"></i></a></div></div>
+          <div class="footer-col"><h3>اكتشف</h3><ul class="footer-links"><li><a href="services.html">الخدمات</a></li><li><a href="booking.html">حاسبة السعر والحجز</a></li><li><a href="track.html">تتبّع الطلب</a></li><li><a href="about.html">عن الجودة</a></li></ul></div>
+          <div class="footer-col"><h3>للمنشآت</h3><ul class="footer-links"><li><a href="business.html">حلول قطاع الأعمال</a></li><li><a href="business.html#sectors">الفنادق والمكاتب</a></li><li><a href="business.html#quote">اطلب عرضاً</a></li></ul></div>
+          <div class="footer-col"><h3>تواصل</h3><ul class="footer-links"><li class="footer-contact-item"><i data-lucide="phone"></i><a data-call href="#" dir="ltr">056 301 0660</a></li><li class="footer-contact-item"><i data-lucide="map-pin"></i><a data-maps href="#">2975 شارع الحمدانية، جدة</a></li><li class="footer-contact-item"><i data-lucide="clock-3"></i><span>السبت – الخميس<br />10 ص – 10 م</span></li></ul></div>
+        </div>
+        <div class="footer-bottom"><span>© <span data-year></span> مغاسل الجودة الآلية.</span><span>الطلب الرقمي يحتاج تأكيداً عبر واتساب</span></div>
+      </div>
+    </footer>
+    <div class="floating-actions"><button class="float-btn scroll-top" type="button" data-scroll-top aria-label="إلى أعلى"><i data-lucide="arrow-up"></i></button><a class="float-btn" data-whatsapp href="#" aria-label="واتساب"><i data-lucide="message-circle"></i></a></div>
+    <div class="mobile-order-bar"><a class="btn btn-primary" href="track.html"><i data-lucide="route"></i> تتبّع الطلب</a><a class="btn btn-yellow" data-call href="#"><i data-lucide="phone"></i> اتصل الآن</a></div>
+    <div class="toast" data-toast role="status" aria-live="polite"><i data-lucide="sparkles"></i><span>تم</span></div>
+    <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
