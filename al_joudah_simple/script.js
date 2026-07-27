@@ -124,6 +124,7 @@ function initPreferenceControls() {
   languageButton?.addEventListener("click", () => {
     window.QualityI18n?.setLanguage(currentLanguage() === "en" ? "ar" : "en");
     update();
+    initGlobalLinks();
     renderCalculator();
     refreshIcons();
   });
@@ -738,6 +739,8 @@ function initBooking() {
     return { activeItems, area, estimate, service };
   };
 
+  document.addEventListener("quality:languagechange", updateSummary);
+
   const showStep = (step) => {
     currentStep = Math.max(1, Math.min(3, step));
     pages.forEach((page) =>
@@ -879,7 +882,7 @@ function renderTracking(order) {
   };
 
   if (nodes.code) nodes.code.textContent = order.code;
-  if (nodes.name) nodes.name.textContent = order.name;
+  if (nodes.name) nodes.name.textContent = translate(order.name);
   if (nodes.service) nodes.service.textContent = translate(order.service);
   if (nodes.estimate) {
     nodes.estimate.textContent = `${formatNumber(order.estimate)} ${currentLanguage() === "en" ? "SAR" : "ر.س"}`;
@@ -924,6 +927,7 @@ function initTracking() {
   const form = document.querySelector("[data-track-form]");
   if (!form) return;
   const input = form.querySelector("input");
+  let activeOrder = null;
 
   const lookup = (rawCode) => {
     const code = normalizeDigits(rawCode).trim().toUpperCase();
@@ -937,6 +941,7 @@ function initTracking() {
     const content = document.querySelector("[data-tracking-content]");
 
     if (!order) {
+      activeOrder = null;
       content?.classList.add("hidden");
       empty?.classList.remove("hidden");
       document.querySelector("[data-tracking-result]")?.classList.remove("hidden");
@@ -951,8 +956,13 @@ function initTracking() {
       refreshIcons();
       return;
     }
+    activeOrder = order;
     renderTracking(order);
   };
+
+  document.addEventListener("quality:languagechange", () => {
+    if (activeOrder) renderTracking(activeOrder);
+  });
 
   form.addEventListener("submit", (event) => {
     event.preventDefault();
